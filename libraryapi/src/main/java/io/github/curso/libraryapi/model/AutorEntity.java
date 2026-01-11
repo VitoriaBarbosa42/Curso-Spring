@@ -1,20 +1,16 @@
 package io.github.curso.libraryapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "autor", schema = "public")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@ToString
 public class AutorEntity {
 
     @Id
@@ -28,6 +24,10 @@ public class AutorEntity {
     @Column(name =  "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(name = "nacionalidade", length = 50, nullable = false)
-    private String nacionalidade;
+    @Column(name = "nascionalidade", length = 50, nullable = false)
+    private String nascionalidade;
+
+    //@OneToMany(mappedBy = "autor")
+    @Transient
+    private List<LivroEntity> livros;
 }
