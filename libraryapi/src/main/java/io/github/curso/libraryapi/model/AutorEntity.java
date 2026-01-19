@@ -3,14 +3,16 @@ package io.github.curso.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "autor", schema = "public")
 @Data
-@ToString
+@ToString(exclude = "livros")
 public class AutorEntity {
 
     @Id
@@ -27,7 +29,7 @@ public class AutorEntity {
     @Column(name = "nascionalidade", length = 50, nullable = false)
     private String nascionalidade;
 
-    //@OneToMany(mappedBy = "autor")
-    @Transient
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<LivroEntity> livros;
+
 }

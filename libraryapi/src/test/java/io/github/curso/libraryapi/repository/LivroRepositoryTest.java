@@ -6,6 +6,7 @@ import io.github.curso.libraryapi.model.LivroEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -79,18 +80,41 @@ class LivroRepositoryTest {
         repository.save(livro);
     }
 
-//    @Test
-//    void atualizarAutorDoLivro(){
-//
-//        var livroParaAtualizar = repository
-//                .findById(UUID.fromString("f7fed26d-f0de-4ec5-93d9-9f6e436914e7"))
-//                .orElse(null);
-//
-//
-//        AutorEntity autorParaAtualizar = repository
-//                .findById(UUID.fromString("38be42e3-bac8-4433-8668-b1a34ae7a8c8"))
-//                .orElse(null).getAutor();
-//
-//    }
+    @Test
+    void atualizarAutorDoLivro(){
+        UUID id = UUID.fromString("f7fed26d-f0de-4ec5-93d9-9f6e436914e7");
+        var livroParaAtualizar = repository.findById(id).orElse(null);
 
+        UUID idAutor = UUID.fromString("38be42e3-bac8-4433-8668-b1a34ae7a8c8");
+        AutorEntity carlos = autorRepository.findById(idAutor).orElse(null);
+
+        livroParaAtualizar.setAutor(carlos);
+
+        repository.save(livroParaAtualizar);
+    }
+
+    @Test
+    void deletar(){
+        UUID id = UUID.fromString("f7fed26d-f0de-4ec5-93d9-9f6e436914e7");
+        repository.deleteById(id);
+    }
+
+    @Test
+    void deletarCascade(){
+        UUID id = UUID.fromString("6c7bfb2b-e616-419b-b2f5-b46eb72cb4a9");
+        repository.deleteById(id);
+    }
+
+    @Test
+    @Transactional
+    void buscarLivroTeste(){
+        UUID id = UUID.fromString("c8246554-a863-44b5-b0e5-a7277ae9b2b7");
+        LivroEntity livro = repository.findById(id).orElse(null);
+        System.out.print("Livro:");
+        System.out.println(livro.getTitulo());
+
+        System.out.print("Autor:");
+        System.out.println(livro.getAutor().getNome());
+
+    }
 }
