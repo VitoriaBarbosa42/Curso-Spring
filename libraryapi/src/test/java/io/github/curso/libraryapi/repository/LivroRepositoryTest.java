@@ -115,6 +115,45 @@ class LivroRepositoryTest {
 
         System.out.print("Autor:");
         System.out.println(livro.getAutor().getNome());
+    }
 
+    @Test
+    void listarLivrosComQueryJPQL(){
+        var resultado = repository.listarTodos();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarAutoresDosLivros(){
+        var resultado = repository.listarAutoresDosLivros();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarGenerosDeLivrosDeAutoresBrasileiros(){
+        var resultado = repository.listarGenerosAutoresBarsileiros();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroQueryParamTest() {
+        var resultado = repository.findByGenero(GeneroLivro.FICCAO, "dataPublicacao");
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroPisitionalParamTest() {
+        var resultado = repository.findByGeneroPositionalParameters(GeneroLivro.FICCAO, "dataPublicacao");
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void deletePorGeneroTest(){
+        repository.deleteByGenero(GeneroLivro.CIENCIA);
+    }
+
+    @Test
+    void updatePrecoTest(){
+        repository.updatePreco(new BigDecimal("100.00"), "Asss");
     }
 }
