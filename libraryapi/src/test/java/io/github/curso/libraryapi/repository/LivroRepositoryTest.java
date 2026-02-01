@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class LivroRepositoryTest {
 
@@ -51,7 +49,7 @@ class LivroRepositoryTest {
 
         AutorEntity autor = new AutorEntity();
         autor.setNome("Tereza");
-        autor.setNascionalidade("Brasileira");
+        autor.setNacionalidade("Brasileira");
         autor.setDataNascimento(LocalDate.of(1980, 2, 3));
 
         livro.setAutor(autor);
@@ -70,7 +68,7 @@ class LivroRepositoryTest {
 
         AutorEntity autor = new AutorEntity();
         autor.setNome("Carlos");
-        autor.setNascionalidade("Brasileira");
+        autor.setNacionalidade("Brasileira");
         autor.setDataNascimento(LocalDate.of(1985, 4, 30));
 
         autorRepository.save(autor);

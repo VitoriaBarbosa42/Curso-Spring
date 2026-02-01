@@ -26,7 +26,7 @@ public class AutorRepositoryTest {
     public void salvarTest(){
         AutorEntity autor = new AutorEntity();
         autor.setNome("Joao");
-        autor.setNascionalidade("Brasileira");
+        autor.setNacionalidade("Brasileira");
         autor.setDataNascimento(LocalDate.of(1959, 2, 21));
 
         var autorSalvo = autorRepository.save(autor);
@@ -73,7 +73,7 @@ public class AutorRepositoryTest {
     void salvarAutorComLivroTest(){
         AutorEntity autor = new AutorEntity();
         autor.setNome("Antonio");
-        autor.setNascionalidade("Americana");
+        autor.setNacionalidade("Americana");
         autor.setDataNascimento(LocalDate.of(1970,8,5));
 
         LivroEntity livro = new LivroEntity();

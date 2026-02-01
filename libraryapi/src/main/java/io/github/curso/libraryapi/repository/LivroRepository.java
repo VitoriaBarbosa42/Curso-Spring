@@ -48,7 +48,7 @@ public interface LivroRepository extends JpaRepository<LivroEntity, UUID> {
         select l.genero
         from LivroEntity l
         join l.autor a
-        where a.nascionalidade = 'Brasileira'
+        where a.nacionalidade = 'Brasileira'
     """)
     List<String> listarGenerosAutoresBarsileiros();
 

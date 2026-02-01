@@ -5,14 +5,14 @@ import io.github.curso.libraryapi.model.AutorEntity;
 import java.time.LocalDate;
 
 public record AutorDTO(String nome,
-                       LocalDate dataNascomento,
-                       String nascionalidade) {
+                       LocalDate dataNascimento,
+                       String nacionalidade) {
 
     public AutorEntity mapearParaAutor(){
         AutorEntity autor = new AutorEntity();
         autor.setNome(this.nome);
-        autor.setDataNascimento(this.dataNascomento);
-        autor.setNascionalidade(this.nascionalidade);
+        autor.setDataNascimento(this.dataNascimento);
+        autor.setNacionalidade(this.nacionalidade);
         return autor;
     }
 
