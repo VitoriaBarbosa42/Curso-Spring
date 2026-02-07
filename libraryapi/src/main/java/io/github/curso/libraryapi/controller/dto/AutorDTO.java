@@ -3,10 +3,14 @@ package io.github.curso.libraryapi.controller.dto;
 import io.github.curso.libraryapi.model.AutorEntity;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
-public record AutorDTO(String nome,
-                       LocalDate dataNascimento,
-                       String nacionalidade) {
+public record AutorDTO(
+        UUID id,
+        String nome,
+        LocalDate dataNascimento,
+        String nacionalidade
+) {
 
     public AutorEntity mapearParaAutor(){
         AutorEntity autor = new AutorEntity();
