@@ -21,6 +21,15 @@ public class AutorService {
         return repository.save(autor);
     }
 
+    public void atualizar(AutorEntity autor){
+
+        if(autor.getId() == null){
+            throw new IllegalArgumentException("Para atualizar, é necessario que o autor ja esteja salvo na base.");
+        }
+
+        repository.save(autor);
+    }
+
     public Optional<AutorEntity> obterPorId(UUID id){
         return repository.findById(id);
     }
