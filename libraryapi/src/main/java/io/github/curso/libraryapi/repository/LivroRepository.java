@@ -75,5 +75,6 @@ public interface LivroRepository extends JpaRepository<LivroEntity, UUID> {
     @Query(" update LivroEntity set preco = ?1 where titulo = ?2")
     void updatePreco(BigDecimal preco, String titulo);
 
+    boolean existsByAutor(AutorEntity autor);
 
 }
